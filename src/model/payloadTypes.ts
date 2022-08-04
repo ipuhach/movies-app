@@ -7,5 +7,5 @@ export interface MoviesPayload {
 }
 
 export interface ErrorPayload {
-  error: string;
+  message: string;
 }

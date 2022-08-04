@@ -1,3 +1,4 @@
+/*
 import { moviesActions } from "./moviesSlice";
 import { movieDetailsActions } from "./movieDetailsSlice";
 
@@ -44,3 +45,5 @@ export const fetchMovieDetails = (movieId: string): AppThunk => {
       });
   };
 };
+*/
+export {};
