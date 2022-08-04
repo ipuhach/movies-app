@@ -1,0 +1,9 @@
+.LayoutContainer{
+    display:flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+.Content{
+    flex-grow: 1;
+    padding-bottom: 3rem;
+}

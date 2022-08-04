@@ -1,0 +1,26 @@
+.movieContainer{
+    display:flex;
+}
+
+.movieContainer >div{
+    flex-grow:1;
+}
+.movieContainer >div:first-child{
+    width:200px;
+    margin-right: 1rem;
+}
+
+.movieContainer >div:first-child img{
+    max-width:200px;
+}
+
+button.backButton{
+    margin: 2rem 2rem 2rem 0;
+
+}
+
+.loader{
+    margin: 2rem auto;
+    display: flex!important;
+    align-items: center;
+}
