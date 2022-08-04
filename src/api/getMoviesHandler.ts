@@ -2,7 +2,7 @@ import { Movie } from "../model/Movie";
 import { MoviesData } from "../model/actionTypes";
 import { FetchMoviesResponseData } from "../model/actionTypes";
 
-const PAGE_ITEM_LIMIT = 9;
+const PAGE_ITEM_LIMIT = 12;
 
 function searchParamCreation(searchQuery: string): URLSearchParams {
   //db searchquery creation:

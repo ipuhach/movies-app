@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Movie } from "../model/Movie";
-import { MoviesData } from "../model/actionTypes";
-import { ErrorPayload } from "../model/payloadTypes";
+import { MoviesData, ErrorPayload } from "../model/actionTypes";
 
 //import type { RootState } from './store';
 
@@ -29,13 +28,16 @@ const moviesSlice = createSlice({
   reducers: {
     getMoviesStarted(state) {
       state.loading = true;
+      state.movies = [];
+      state.pageAmount = 0;
+      state.currentPage = 1;
+      state.error = "";
     },
     getMoviesSuccess(state, action: PayloadAction<MoviesData>) {
       state.movies = action.payload.movies;
       state.pageAmount = action.payload.pageAmount;
       state.currentPage = action.payload.currentPage;
       state.loading = false;
-      state.error = "";
     },
     getMoviesFailure(state, action: PayloadAction<ErrorPayload>) {
       state.loading = false;

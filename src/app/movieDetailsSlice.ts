@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Movie } from "../model/Movie";
-import { ErrorPayload } from "../model/payloadTypes";
+import { ErrorPayload } from "../model/actionTypes";
 
 //import type { RootState } from './store';
 
@@ -25,11 +25,11 @@ const movieDetailsSlice = createSlice({
     getMovieDetailsStarted(state) {
       state.movieDetail = null;
       state.loading = true;
+      state.error = "";
     },
     getMovieDetailsSuccess(state, action: PayloadAction<Movie>) {
       state.movieDetail = action.payload;
       state.loading = false;
-      state.error = "";
     },
     getMovieDetailsFailure(state, action: PayloadAction<ErrorPayload>) {
       state.loading = false;

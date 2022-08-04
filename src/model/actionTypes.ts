@@ -9,3 +9,7 @@ export interface FetchMoviesResponseData {
   data: Movie[];
   total: number;
 }
+
+export interface ErrorPayload {
+  error: string;
+}

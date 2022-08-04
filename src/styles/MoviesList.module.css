@@ -1,15 +1,27 @@
-.MoviesCardContainer{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1rem;
+.MoviesCardContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
 }
 
 .paginator {
-    margin: 2rem auto;
-    display: flex;
-    align-items: center;
+  margin: 2rem auto;
+  display: flex;
+  align-items: center;
 }
-.error{    
-    margin: 2rem auto;
-    text-align: center;
+.error {
+  margin: 2rem auto;
+  text-align: center;
+}
+
+@media screen and (max-width: 760px) {
+  .MoviesCardContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .MoviesCardContainer {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

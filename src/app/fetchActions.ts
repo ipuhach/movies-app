@@ -24,7 +24,7 @@ export const fetchMoviesData = (searchQuery: string): AppThunk => {
         dispatch(moviesActions.getMoviesSuccess(data));
       })
       .catch((error) => {
-        dispatch(moviesActions.getMoviesFailure(error.message));
+        dispatch(moviesActions.getMoviesFailure({ error: error.message }));
       });
   };
 };
@@ -38,7 +38,9 @@ export const fetchMovieDetails = (movieId: string): AppThunk => {
         dispatch(movieDetailsActions.getMovieDetailsSuccess(data));
       })
       .catch((error) => {
-        dispatch(movieDetailsActions.getMovieDetailsFailure(error.message));
+        dispatch(
+          movieDetailsActions.getMovieDetailsFailure({ error: error.message })
+        );
       });
   };
 };

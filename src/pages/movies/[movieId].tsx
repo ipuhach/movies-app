@@ -4,10 +4,12 @@ import css from "../../styles/MovieItem.module.css";
 import { Box, Button, CircularProgress } from "@mui/material";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { fetchMovieDetails } from "../../app/fetchActions";
+import ErrorModal from "../../components/ErrorModal";
 
 function Detail() {
   const movie = useAppSelector((state) => state.movieDetails.movieDetail);
   const isLoading = useAppSelector((state) => state.movieDetails.loading);
+  const error = useAppSelector((state) => state.movieDetails.error);
   const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
@@ -63,6 +65,7 @@ function Detail() {
       ) : (
         <div>No movie found</div>
       )}
+      {error && <ErrorModal errorMessage={error} />}
     </>
   );
 }
