@@ -7,12 +7,14 @@ import FilterTopBar from "../../components/FilterTopBar";
 
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { fetchMoviesData } from "../../app/fetchActions";
+import ErrorModal from "../../components/ErrorModal";
 
 function MoviesListPage() {
   const movies = useAppSelector((state) => state.movies.movies);
   const loading = useAppSelector((state) => state.movies.loading);
   const pageAmount = useAppSelector((state) => state.movies.pageAmount);
   const currentPage = useAppSelector((state) => state.movies.currentPage);
+  const error = useAppSelector((state) => state.movies.error);
 
   const dispatch = useAppDispatch();
 
@@ -103,6 +105,7 @@ function MoviesListPage() {
           handlePaginationChange={handlePaginationChange}
         />
       )}
+      {error && <ErrorModal errorMessage={error} />}
     </>
   );
 }

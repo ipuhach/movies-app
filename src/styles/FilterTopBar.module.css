@@ -1,20 +1,20 @@
-.topFilterContainer{
-    width:100%;
-    display: flex;
-    margin-bottom: 1rem;
+.topFilterContainer {
+  width: 100%;
+  display: flex;
+  margin-bottom: 1rem;
 }
 
-.searchContainer{
-    position: relative;
-    min-width:300px;
-    flex-grow: 1;
+.searchContainer {
+  position: relative;
+  min-width: 250px;
+  flex-grow: 1;
 }
-.searchContainer button{
-    position: absolute;
-    top: 8px;
-    right: 8px;
+.searchContainer button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }
 
-.topFilterContainer .sortByButton{
-    margin-left: 1rem;
+.topFilterContainer .sortByButton {
+  margin-left: 1rem;
 }
