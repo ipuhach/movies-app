@@ -3,7 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import css from "../../styles/MovieItem.module.css";
 import { Box, Button, CircularProgress } from "@mui/material";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { fetchMovieDetails } from "../../app/fetchActions";
+import { movieDetailsActions } from "../../app/movieDetailsSlice";
+//import { fetchMovieDetails } from "../../app/fetchActions";
 import ErrorModal from "../../components/ErrorModal";
 
 function Detail() {
@@ -16,7 +17,8 @@ function Detail() {
   const { movieId } = useParams();
 
   useEffect(() => {
-    dispatch(fetchMovieDetails(movieId!));
+    //dispatch(fetchMovieDetails(movieId!));
+    dispatch(movieDetailsActions.getMovieDetailsStarted(movieId!));
   }, [dispatch, movieId]);
 
   function backButtonHandler(): void {

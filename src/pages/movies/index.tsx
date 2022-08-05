@@ -6,7 +6,8 @@ import MoviesList from "../../components/MoviesList";
 import FilterTopBar from "../../components/FilterTopBar";
 
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { fetchMoviesData } from "../../app/fetchActions";
+//import { fetchMoviesData } from "../../app/fetchActions";
+import { moviesActions } from "../../app/moviesSlice";
 import ErrorModal from "../../components/ErrorModal";
 
 function MoviesListPage() {
@@ -30,7 +31,8 @@ function MoviesListPage() {
       setSearchTextFilter(searchParams.get("search")!);
     }
 
-    dispatch(fetchMoviesData(searchParams.toString()));
+    //dispatch(fetchMoviesData(searchParams.toString()));
+    dispatch(moviesActions.getMoviesStarted(searchParams.toString()));
   }, [dispatch, searchParams]);
 
   function handleTitleChange(event: React.ChangeEvent<HTMLInputElement>): void {

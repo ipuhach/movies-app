@@ -21,14 +21,16 @@ const MoviesList: React.FC<{
               <MoviesListItem movie={movie} key={movie.id} />
             ))}
           </div>
-          <Stack className={css.paginator} spacing={2}>
-            <Pagination
-              color="primary"
-              count={props.pageAmount}
-              page={props.currentPage}
-              onChange={props.handlePaginationChange}
-            />
-          </Stack>
+          {props.pageAmount > 1 && (
+            <Stack className={css.paginator} spacing={2}>
+              <Pagination
+                color="primary"
+                count={props.pageAmount}
+                page={props.currentPage}
+                onChange={props.handlePaginationChange}
+              />
+            </Stack>
+          )}
         </>
       ) : (
         <div className={css.error}>No movies found</div>

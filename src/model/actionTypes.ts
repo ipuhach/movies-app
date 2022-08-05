@@ -5,6 +5,7 @@ export interface MoviesData {
   pageAmount: number;
   currentPage: number;
 }
+
 export interface FetchMoviesResponseData {
   data: Movie[];
   total: number;

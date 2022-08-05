@@ -2,13 +2,20 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import moviesSlice from "./moviesSlice";
 import movieDetailsSlice from "./movieDetailsSlice";
+import createSagaMiddleware from "redux-saga";
+import rootSaga from "./rootSaga";
+
+const sagaMiddleware = createSagaMiddleware();
 
 const store = configureStore({
   reducer: {
     movies: moviesSlice.reducer,
     movieDetails: movieDetailsSlice.reducer,
   },
+  middleware: [sagaMiddleware],
 });
+
+sagaMiddleware.run(rootSaga);
 
 export default store;
 

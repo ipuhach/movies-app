@@ -26,7 +26,8 @@ const moviesSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {
-    getMoviesStarted(state) {
+    //getMoviesStarted(state) {
+    getMoviesStarted(state, action: PayloadAction<string>) {
       state.loading = true;
       state.movies = [];
       state.pageAmount = 0;

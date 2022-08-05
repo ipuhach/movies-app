@@ -22,7 +22,8 @@ const movieDetailsSlice = createSlice({
   name: "movieDetails",
   initialState,
   reducers: {
-    getMovieDetailsStarted(state) {
+    //getMovieDetailsStarted(state) {
+    getMovieDetailsStarted(state, action: PayloadAction<string>) {
       state.movieDetail = null;
       state.loading = true;
       state.error = "";

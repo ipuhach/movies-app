@@ -2,7 +2,7 @@
   display: flex;
 }
 
-.movieContainer > div {
+.movieContainer > div:last-child {
   flex-grow: 1;
 }
 .movieContainer > div:first-child {
@@ -30,6 +30,7 @@ button.backButton {
   }
   .movieContainer > div:first-child {
     margin-right: 0;
+    flex-grow: 1;
   }
 
   .movieContainer img {

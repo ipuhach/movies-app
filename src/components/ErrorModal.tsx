@@ -1,6 +1,5 @@
 import { Backdrop, Box, Modal, Typography } from "@mui/material";
 import { useState } from "react";
-import { useAppDispatch } from "../app/hooks";
 import css from "../styles/ErrorModal.module.css";
 
 const ErrorModal: React.FC<{ errorMessage: string }> = (props) => {
@@ -9,13 +8,7 @@ const ErrorModal: React.FC<{ errorMessage: string }> = (props) => {
   const handleClose = () => setOpen(false);
   return (
     <>
-      <Modal
-        hideBackdrop={true}
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
+      <Modal hideBackdrop={true} open={open} onClose={handleClose}>
         <>
           <Backdrop
             open={open}
