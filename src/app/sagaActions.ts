@@ -12,8 +12,12 @@ function* fetchMovies(action: PayloadAction<string>) {
   try {
     const moviesData: MoviesData = yield call(getMoviesHandler, action.payload);
     yield put(moviesActions.getMoviesSuccess(moviesData));
-  } catch (error: any) {
-    yield put(moviesActions.getMoviesFailure({ error: error.message }));
+  } catch (error) {
+    let errorMessage: string = "Unknown Error!";
+    if (error instanceof Error) {
+      errorMessage = error.message;
+    }
+    yield put(moviesActions.getMoviesFailure({ error: errorMessage }));
   }
 }
 
@@ -25,9 +29,13 @@ function* fetchMovieDetails(action: PayloadAction<string>) {
   try {
     const movieData: Movie = yield call(getMovieDetailsHandler, action.payload);
     yield put(movieDetailsActions.getMovieDetailsSuccess(movieData));
-  } catch (error: any) {
+  } catch (error) {
+    let errorMessage: string = "Unknown Error!";
+    if (error instanceof Error) {
+      errorMessage = error.message;
+    }
     yield put(
-      movieDetailsActions.getMovieDetailsFailure({ error: error.message })
+      movieDetailsActions.getMovieDetailsFailure({ error: errorMessage })
     );
   }
 }
