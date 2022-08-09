@@ -16,6 +16,7 @@ const MoviesListItem: React.FC<{ movie: Movie }> = (props) => {
         component={Link}
         to={props.movie.id.toString()}
         className={css.MoviesCard}
+        data-testid="movies-list-item"
       >
         <Typography>{props.movie.title}</Typography>
         <img
