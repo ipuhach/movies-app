@@ -1,5 +1,4 @@
-import React from "react";
-import { queryByTestId, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import MoviesList from "./MoviesList";
 import { Movie } from "../model/Movie";
 import { BrowserRouter } from "react-router-dom";
@@ -129,8 +128,8 @@ describe("MoviesList component with 12 movies, current page equal to 1 and 250 a
       />,
       { wrapper: BrowserRouter }
     );
-    const imgTags = screen.getAllByTestId("movies-list-item");
-    expect(imgTags.length).toBe(12);
+    const moviesList = screen.getAllByTestId("movies-list-item");
+    expect(moviesList.length).toBe(12);
   });
   test("renders pagination", () => {
     render(
@@ -191,6 +190,79 @@ describe("MoviesList component with EMPTY movies list, current page equal to 1 a
     );
     const noMoviesResponse = screen.getByText(/No movies found/i);
     expect(noMoviesResponse).toBeInTheDocument();
+  });
+  test("renders no pagination", () => {
+    render(
+      <MoviesList
+        movies={movies}
+        pageAmount={pageAmount}
+        currentPage={currentPage}
+        handlePaginationChange={() => {}}
+      />,
+      { wrapper: BrowserRouter }
+    );
+    expect(screen.queryByTestId("pagination")).not.toBeInTheDocument();
+  });
+});
+
+describe("MoviesList component with 3 movies list, current page equal to 1 and 0 available pages", () => {
+  let movies: Movie[] = [
+    {
+      id: 8388,
+      title: "¡Three Amigos!",
+      tagline:
+        "They're Down On Their Luck And Up To Their Necks In Senoritas, Margaritas, Banditos And Bullets!",
+      poster_path:
+        "https://image.tmdb.org/t/p/w500/zuTwahw966MoFwD7B2SFujaT5yp.jpg",
+      overview:
+        "Three unemployed actors accept an invitation to a Mexican village to replay their bandit fighter roles, unaware that it is the real thing.",
+    },
+    {
+      id: 252178,
+      title: "'71",
+      tagline: "",
+      poster_path:
+        "https://image.tmdb.org/t/p/w500/b8dmfG84peFdouN2N8wOsiI9WHt.jpg",
+      overview:
+        "A young British soldier must find his way back to safety after his unit accidentally abandons him during a riot in the streets of Belfast.",
+    },
+    {
+      id: 19913,
+      title: "(500) Days of Summer",
+      tagline: "This is not a love story. This is a story about love.",
+      poster_path:
+        "https://image.tmdb.org/t/p/w500/5SjtNPD1bb182vzQccvEUpXHFjN.jpg",
+      overview:
+        "Tom, greeting-card writer and hopeless romantic, is caught completely off-guard when his girlfriend, Summer, suddenly dumps him. He reflects on their 500 days together to try to figure out where their love affair went sour, and in doing so, Tom rediscovers his true passions in life.",
+    },
+  ];
+  let pageAmount: number = 0;
+  let currentPage: number = 1;
+  test("does not render 'No movies found' response message", () => {
+    render(
+      <MoviesList
+        movies={movies}
+        pageAmount={pageAmount}
+        currentPage={currentPage}
+        handlePaginationChange={() => {}}
+      />,
+      { wrapper: BrowserRouter }
+    );
+    expect(screen.queryByText(/No movies found/i)).not.toBeInTheDocument();
+  });
+
+  test("renders list of 3 movies", () => {
+    render(
+      <MoviesList
+        movies={movies}
+        pageAmount={pageAmount}
+        currentPage={currentPage}
+        handlePaginationChange={() => {}}
+      />,
+      { wrapper: BrowserRouter }
+    );
+    const moviesList = screen.getAllByTestId("movies-list-item");
+    expect(moviesList.length).toBe(3);
   });
   test("renders no pagination", () => {
     render(
