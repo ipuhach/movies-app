@@ -16,7 +16,7 @@ const MoviesList: React.FC<{
     <div>
       {props.movies.length > 0 ? (
         <>
-          <div className={css.MoviesCardContainer}>
+          <div className={css.MoviesCardContainer} data-testid="movies-list">
             {props.movies.map((movie) => (
               <MoviesListItem movie={movie} key={movie.id} />
             ))}
@@ -24,6 +24,7 @@ const MoviesList: React.FC<{
           {props.pageAmount > 1 && (
             <Stack className={css.paginator} spacing={2}>
               <Pagination
+                data-testid="pagination"
                 color="primary"
                 count={props.pageAmount}
                 page={props.currentPage}
